@@ -1,14 +1,23 @@
 const express = require("express")
 const app = express()
+const { engine } = require("express-handlebars")
 require('dotenv').config()
 
 const { dbConnection } = require("./database/config")
 const { routerUser } = require("./routes/user")
 
+const PORT = process.env.PORT
+
 // Connect to DB
 dbConnection()
 
-const PORT = process.env.PORT
+// Template Engine 
+app.engine('hbs', engine({ extname: '.hbs'}))
+app.set('view engine', 'hbs')
+app.set('views', './views')
+
+// Middlewares
+app.use(express.static('public'))
 
 // Routes
 app.use('/', routerUser)
