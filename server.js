@@ -4,6 +4,7 @@ const { engine } = require("express-handlebars")
 require('dotenv').config()
 
 const { dbConnection } = require("./database/config")
+const { routerAuth } = require("./routes/auth")
 const { routerUser } = require("./routes/user")
 
 const PORT = process.env.PORT
@@ -21,6 +22,7 @@ app.use(express.static('public'))
 
 // Routes
 app.use('/', routerUser)
+app.use('/', routerAuth)
 
 app.listen(PORT, (err) => {
     if(err) throw new Error ("Server off",err)
