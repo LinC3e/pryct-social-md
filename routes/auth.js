@@ -4,11 +4,11 @@ const routerAuth = express.Router()
 
 // Routher Auth 
 
-routerAuth.get('/register',  registerForm)
-routerAuth.post('/register', register )
-routerAuth.get('/login', loginForm)
-routerAuth.post('/login', login)
-routerAuth.get('/logout', logout)
+routerAuth.get('/auth/register',  registerForm)
+routerAuth.post('/auth/register', register )
+routerAuth.get('/auth/login', loginForm)
+routerAuth.post('/auth/login', login)
+routerAuth.get('/auth/logout', logout)
 
 module.exports = {
     routerAuth
