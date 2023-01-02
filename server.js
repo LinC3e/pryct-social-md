@@ -5,6 +5,7 @@ const session = require('express-session')
 const methodOverride = require('method-override')
 const MongoStore = require('connect-mongo')
 const passport = require('passport')
+const flash = require("connect-flash")
 require('dotenv').config()
 require('./config/passport')
 
@@ -35,6 +36,11 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(flash())
+app.use((req,res,next) => {
+    res.locals.todo_OK = req.flash('todo_OK')
+    res.locals.todo_error = req.flash('todo_error')
+})
 
 
 // Routes

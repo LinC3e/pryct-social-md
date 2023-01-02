@@ -28,6 +28,7 @@ const register = async (req,res) => {
     const userFound = await Auth.findOne({ email })
 
     if(userFound){
+        req.flash('todo_error', 'The email is already registered')
         return res.redirect('/auth/register')
     }
 
@@ -35,7 +36,7 @@ const register = async (req,res) => {
 
     newUser.password = await newUser.passwordEncrypt(password)
     await newUser.save()
-
+    req.flash('todo_OK', 'Register successfully')
     res.redirect('/auth/login')
 }
 
