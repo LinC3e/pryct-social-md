@@ -18,7 +18,7 @@ const PORT = process.env.PORT
 // Connect to DB
 dbConnection()
 
-// Template Engine 
+// Template Engine
 app.engine('hbs', engine({ extname: '.hbs'}))
 app.set('view engine', 'hbs')
 app.set('views', './views')
@@ -40,6 +40,7 @@ app.use(flash())
 app.use((req,res,next) => {
     res.locals.todo_OK = req.flash('todo_OK')
     res.locals.todo_error = req.flash('todo_error')
+    next()
 })
 
 

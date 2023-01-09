@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+}
+
+/*------------------*/
+/*     HEADER       */
+/*------------------*/
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: #272727;
+    /*nav top static*/
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+#navbar li a {
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    transition: 1s ease ;
+}
+
+#navbar li a:hover,
+#navbar li a.active {
+    color: orangered;
+}
+
+#navbar li a.active::after,
+#navbar li a:hover::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background-color: orangered;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
+#menu{
+    display: none;
+    align-items: center;
+}
+
+#close{
+    display: none;
+}
+@media (max-height: 820px) {
+    #navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        right: -400px;
+        height: 100vh;
+        width: 300px;
+        background-color: rgb(232, 231, 231);
+        padding: 50px 0 0 10px;
+        transition: 0.4s;
+    }
+    #navbar li {
+        margin-bottom: 25px;
+    }
+
+    #navbar li a{
+        color: #272727;
+    }
+
+
+    #navbar.active{
+        right: 0px;
+    }
+
+    #menu {
+        display: flex;
+        align-items: center;
+    }
+
+    #menu i{
+        color: whitesmoke;
+        font-size: 20px;
+    }
+
+    #close {
+        display: initial;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        color: black;
+    }
+
+    img{
+        width: 30%;
+    }
+
+    footer{
+        bottom: 0;
+        position: static;
+        height: 250px;
+    }
+
+
+}
+
+/* ---------- */
+/* Header END */
+/* ---------- */
